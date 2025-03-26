@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Financial Analysis Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Financial Analysis Tool</h1>
+    <div class="input-group">
+      <input type="text" id="stockSymbol" placeholder="Enter Stock Symbol (e.g., TSLA)" />
+      <button onclick="analyzeStock()">Analyze</button>
+      <button onclick="toggleManualForm()">Add Manual Data</button>
+    </div>
+
+    <div id="manualForm" style="display:none;">
+      <h3>Enter Financial Data Manually</h3>
+      <div id="manualInputs"></div>
+      <button onclick="generateManualAnalysis()">Save & Analyze</button>
+    </div>
+
+    <div id="results" style="display:none;">
+      <h2>Key Financial Indicators</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Indicator</th>
+            <th>2019</th>
+            <th>2020</th>
+            <th>2021</th>
+            <th>2022</th>
+            <th>2023</th>
+          </tr>
+        </thead>
+        <tbody id="indicatorTable"></tbody>
+      </table>
+
+      <canvas id="chart" height="150"></canvas>
+
+      <button onclick="downloadPDF()">Download PDF Report</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+    <script src="script.js"></script>
+  </div>
+</body>
+</html>
