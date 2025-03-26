@@ -3,8 +3,10 @@ import openai
 import os
 import sqlite3
 from datetime import datetime
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Load your OpenAI API key securely from environment variables
 openai.api_key = os.getenv("OPENAI_API_KEY")
