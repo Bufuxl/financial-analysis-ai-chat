@@ -17,6 +17,15 @@ def save_chat(symbol, user_message, ai_reply):
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("""
+        CREATE TABLE IF NOT EXISTS chat_history (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            symbol TEXT,
+            user_message TEXT,
+            ai_reply TEXT,
+            created_at TIMESTAMP
+        )
+    """)
+    cursor.execute("""
         INSERT INTO chat_history (symbol, user_message, ai_reply, created_at)
         VALUES (?, ?, ?, ?)
     """, (symbol, user_message, ai_reply, datetime.utcnow()))
